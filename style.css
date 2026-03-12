@@ -1,11 +1,12 @@
-/* Simple clean responsive blog style */
+/* Minimal, clean, responsive blog style */
 
 body {
     font-family: system-ui, sans-serif;
-    line-height: 1.6;
-    max-width: 700px;
-    margin: 2rem auto;
+    width: 100%;         /* allow body to shrink below max-width on mobile */
+    max-width: 700px;    /* keeps content narrow on desktop */
+    margin: 2rem auto;   /* centers content */
     padding: 0 1rem;
+    line-height: 1.7;    /* slightly bigger for readability */
     color: #111;
     background: #fff;
 }
@@ -16,17 +17,13 @@ h1, h2, h3 {
     margin-bottom: 1rem;
 }
 
-h1 {
-    font-size: 2rem;
-}
-
-h2 {
-    font-size: 1.5rem;
-}
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
 
 p {
-    margin-bottom: 1rem;
-    text-align: justify;
+    margin-bottom: 1.5rem; /* bigger spacing for visual breathing room */
+    text-align: justify;    /* even paragraphs */
+    hyphens: auto;          /* smooth justification on narrow screens */
 }
 
 ul, ol {
@@ -58,25 +55,22 @@ blockquote {
     margin-right: 0;
 }
 
-@media (max-width: 600px) {
-    body {
-        margin: 1rem;
-        padding: 0 0.5rem;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    h2 {
-        font-size: 1.2rem;
-    }
-}
-
+/* Publication date styling */
 time {
     display: block;
     color: #666;
     font-size: 0.9rem;
     margin-bottom: 1rem;
     font-style: italic;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    body {
+        margin: 1rem;        /* less margin on small screens */
+        padding: 0 0.5rem;   /* smaller padding on sides */
+    }
+
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
 }
