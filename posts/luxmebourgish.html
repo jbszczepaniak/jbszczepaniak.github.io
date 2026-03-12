@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learning Luxembourgish with Language Models</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <h1>Learning Luxembourgish with Language Models</h1>
+  <p>At the time of writing this, I am not even sure if I’ve passed the Sproochentest exam. Still, I decided to go ahead with this write-up anyway. Over the past months I’ve ended up with a workflow that helped me train several of the skills that make up language learning, and I thought it might be worth sharing.</p>
+
+  <p>The Sproochentest is the Luxembourgish language exam required to obtain Luxembourgish citizenship. It requires speaking at A2 level and listening at B1 level.</p>
+
+  <p>I started preparing in January 2025 by buying <em>Schwätzt Dir Lëtzebuergesch A1</em> and downloading the <em>Learn Luxembourgish Online</em> app. I finished the A1 material by September 2025, completed an A2.1 course organised by the Strassen commune by December, and attempted the Sproochentest on February 26th, 2026 while attending A2.2.</p>
+
+  <p>In this article I’ll focus mostly on the last three or four months, when most of the experiments described here happened.</p>
+
+  <p>Luxembourgish is a niche language. Many of the tools I used when learning English (hopefully the evidence of that is this article) and French (roughly B2 — my last formal course was B2 and I still consume French content regularly) simply don’t exist here.</p>
+
+  <p>There isn’t a large corpus of transcribed audio or video across many topics, so I had to get a bit creative.</p>
+
+  <p>This lack of resources pushed me to experiment with the limits of modern language models as learning tools.</p>
+
+  <hr>
+
+  <h2>Listening comprehension</h2>
+  <p>Listening comprehension was the part I spent the most time on.</p>
+
+  <p>The Sproochentest requires B1-level listening comprehension. Listening to content you don’t understand doesn’t get you very far. In my opinion, having a transcript is crucial for developing listening skills.</p>
+
+  <p>The INLL publishes a podcast called <em>Poterkescht</em>. Each two-to-three-minute episode is a dialogue about an everyday topic. Every episode is labelled with a comprehension level (from A1 to B2) and — crucially — includes a transcript.</p>
+
+  <p>My initial workflow was simple. I would listen to A1 podcasts while following the transcript and try to note words or expressions I didn’t know. Going through three minutes of material in depth could easily take an hour. I wouldn’t stop until I was able to listen to the entire piece, distinguish all the words, and understand their meaning.</p>
+
+  <p>Listening to the same recording five or six times while stopping every other sentence became normal.</p>
+
+  <p>In hindsight I don’t recommend this exercise. It’s tedious and it trains the wrong muscle. My goal was to improve listening, not reading. That said, this method might still be useful at the very beginning of the journey, when you don’t understand much at all.</p>
+
+  <hr>
+
+  <h2>Focus and using language models</h2>
+  <p>If you asked my wife about my attention span, she would probably tell you about the dozens of times she asked me to do something, only to discover that I was doing something completely different.</p>
+
+  <p>I tried to tackle the focus problem in two ways.</p>
+
+  <p>First, I started using the Pomodoro technique. I would enclose learning sessions in 25-minute blocks and take note of each finished session to give myself a small sense of accomplishment.</p>
+
+  <p>Second, I realised that talking with language models could help me stay engaged for longer.</p>
+
+  <p>That wasn’t the only reason I started using LLMs. I had already seen their value around 2023 while learning French. I remember our teacher giving us weekly assignments where we had to explain certain words in French. I would write my description of the word and feed it to ChatGPT until it guessed the word I was trying to describe.</p>
+
+  <p>Luxembourgish, however, is a small language and very similar to German. I was worried that using LLMs might cause more harm than good.</p>
+
+  <p>I think Claude Sonnet 3.5 and ChatGPT-4o were the first models that could produce reasonably correct Luxembourgish. I used to test them by asking them to conjugate <em>maachen</em>. Those models were the first to give me the correct third-person singular form <em>mécht</em> instead of the German <em>macht</em>.</p>
+
+  <p>I don’t actually speak German, but I studied it for nine years in school. Even though I am a perfect example of someone who can spend a large part of childhood learning a language and retain very little, those years still left me with some intuition. It is usually enough for me to notice when an LLM confidently gives me German instead of Luxembourgish.</p>
+
+  <p>Once I felt that the models were usable, I came up with an idea. I would feed the transcript of a podcast episode to the model and then chat with it about the conversation.</p>
+
+  <p>At the same time, I realised something important: I wanted the model to have the transcript, but I didn’t want to read it myself — at least not yet.</p>
+
+  <p>My workflow looked like this. I would listen to the podcast and try to understand what was happening. There was no scientific method behind it, but I used three pens: black, blue, and red.</p>
+
+  <p>I would listen to the podcast three times and write down everything I heard, each time using a different pen. Sometimes I simply couldn’t figure out what word I was hearing.</p>
+
+  <p>In those situations I would phonetically describe the word to the LLM and ask what part of the transcript I might be referring to.</p>
+
+  <p>For example, once I told the model that I had heard something like <em>“zengsaite”</em>. I had no idea what it meant. The model pointed me to the phrase <em>zéng Säiten</em> — “ten pages”.</p>
+
+  <p>I found this workflow much more engaging than simply reading the transcript to identify the missing words. I also tend to remember these moments quite well — the moment when I wrote down what I thought I heard and the model revealed what it actually was.</p>
+
+  <p>The notes from these sessions usually filled a single A4 page. I would throw that page away afterwards. Only words that felt particularly important made it into my notebook.</p>
+
+  <hr>
+
+  <h2>Dictionary and quizzes</h2>
+  <p>This workflow worked reasonably well, but I still had a problem. When I asked the model to translate words, it would sometimes give me German equivalents instead of Luxembourgish ones.</p>
+
+  <p>When searching for words manually, I often used <em>lod.lu</em>, a Luxembourgish dictionary that provides translations between English, French, German, and Portuguese. At some point I decided to instruct the model to consult the dictionary whenever I asked about a word.</p>
+
+  <p>The dictionary even exposes an API (<a href="https://lod.lu/api/doc">https://lod.lu/api/doc</a>), which made it quite effective for the model to look things up. This drastically improved the reliability of the answers.</p>
+
+  <p>Each entry in the dictionary also contains example sentences, which meant I could get high-quality usage examples as well.</p>
+
+  <p>Sometimes the model would still ignore the instruction and rely on its own knowledge. When that happened, I would simply reinforce the request and explicitly ask it to check the dictionary. This worked surprisingly well.</p>
+
+  <p>The listening part of the Sproochentest consists of three short recordings, each followed by a multiple-choice question.</p>
+
+  <p>My next iteration was to generate quizzes directly from the transcripts.</p>
+
+  <p>I was aware of the risk that the model might hallucinate incorrect sentences. But since it was consulting the dictionary, I hoped it would verify the vocabulary before constructing the questions.</p>
+
+  <p>My workflow changed slightly. I would feed the transcript to the model and ask it to create a ten-question quiz based on the conversation.</p>
+
+  <p>First I would read the questions, so I knew what information to listen for. Then I would go through my usual three listening passes with the three pens. After that I would try to answer the quiz and finally review the transcript and note anything important in my notebook.</p>
+
+  <p>In my prompt I asked the model to generate questions with only one correct answer. I also encouraged it to occasionally include options like “it was not said” or “all of the above are correct”, just to make the quiz slightly more difficult.</p>
+
+  <p>Interestingly, the model often revealed the answer to one question while asking the next one. I even added a specific instruction telling it not to do that. It listened to that instruction… sometimes.</p>
+
+  <p>Of course I could have built a more robust system by generating the quiz and the answers in separate contexts. But I was mainly interested in learning the language, not in building a perfectly engineered solution. For my purposes it was good enough.</p>
+
+  <p>One funny observation: models from the Sonnet family seemed strangely reluctant to make option D the correct answer.</p>
+
+  <hr>
+
+  <h2>Images, conversation, and AI feedback</h2>
+  <p>Overall, this workflow worked surprisingly well.</p>
+
+  <p>About three weeks before the exam I improved it further by pointing the model not only to the dictionary, but also to Wikipedia.</p>
+
+  <p>The Luxembourgish version of Wikipedia contains articles about surprisingly simple words. For example, there is an article about the word <em>Posch</em> (bag): <a href="https://lb.wikipedia.org/wiki/Posch">https://lb.wikipedia.org/wiki/Posch</a></p>
+
+  <p>It turned out to be quite useful. The article includes natural Luxembourgish descriptions and examples.</p>
+
+  <blockquote>
+    <p>D'Posch gëtt an der Hand, iwwer dem Aarm oder iwwer der Schëller gedroen.</p>
+  </blockquote>
+
+  <p>This type of sentence is surprisingly helpful when preparing for another part of the Sproochentest exam: image description.</p>
+
+  <p>During the exam you receive three photographs and must choose one to describe. Very often there are people in those pictures, so being able to describe details — such as how someone is carrying a bag — can actually be useful.</p>
+
+  <p>The image description workflow had some similarities to the listening one. I would again rely on the dictionary and Wikipedia. The prompt was slightly different.</p>
+
+  <p>I would tell the model something like: <em>I am giving you a photo. I will also describe what I see in it. Your task is to look at the photo, verify whether my description is accurate, correct my sentences, and suggest details that I might have missed.</em></p>
+
+  <p>To get images I would simply search for things like “restaurant”, “busy street”, or “market”.</p>
+
+  <p>This method was a bit hit-and-miss. Sometimes the model claimed that I was describing things that were not in the picture, even though they clearly were. Most of the time, however, it still provided useful feedback and suggestions.</p>
+
+  <hr>
+
+  <h2>Conversation and cross-language learning</h2>
+  <p>The third part of the exam is a conversation about a given topic such as <em>summer</em>, <em>fashion</em>, or <em>media</em>. I didn’t develop any specific workflow for this part.</p>
+
+  <p>However, I used the model quite often in an ad hoc way. Whenever I wanted to check whether a sentence sounded correct, or when I needed a word but didn’t know it in English or French, I would simply ask.</p>
+
+  <p>One of the nicest features of working with language models is that you can freely mix languages. Most of my conversations with the model were in Polish, but I would often throw in English or French words as well.</p>
+
+  <p>This makes searching for words much easier. Instead of jumping between multiple dictionaries, you can simply describe what you mean and keep learning without interrupting your train of thought.</p>
+
+  <hr>
+
+  <h2>Grammar and n-rule</h2>
+  <p>Even though the model was able to produce some Luxembourgish, it still made obvious grammatical mistakes.</p>
+
+  <p>One example is the so-called <em>n-rule</em> (sometimes referred to as the Eiffel rule). According to Wikipedia:</p>
+
+  <blockquote>
+    <p>In the suffix -(e)n or -nn, as well as in function words (e.g. articles, pronouns, prepositions, conjunctions, adverbs), morpheme-final /n/ is deleted before a consonant both word-finally and word-internally, except before homorganic (i.e. apical) noncontinuants, i.e. /n t d ts tʃ dʒ/, and /h/.</p>
+  </blockquote>
+
+  <p>At some point I added this rule directly to my prompt, along with a few examples, and explicitly asked the model to respect it. This improved the results.</p>
+
+  <p>There were certainly situations where the model made mistakes and I didn’t catch them. It’s possible that I even learned some things incorrectly.</p>
+
+  <p>The only mitigation I found was to ask follow-up questions such as:</p>
+  <ul>
+    <li>“Where did you get this example from?”</li>
+    <li>“Can you show me a source that confirms this usage?”</li>
+  </ul>
+
+  <p>Sometimes the model would provide a good explanation. Other times it would admit that the example was made up.</p>
+
+  <p>I also often asked the model to find examples in the dictionary. For example: <em>the structure you suggested sounds correct, but can you find examples of it in the dictionary so I can see how it is actually used?</em></p>
+
+  <p>This worked surprisingly well.</p>
+
+  <p>It also made me realise why fully autonomous learning tools are still difficult to build — at least for smaller languages like Luxembourgish.</p>
+
+  <p>At the same time, this exploratory process was part of what kept me engaged. Instead of passively consuming material, I could dive into small linguistic puzzles and investigate them in conversation with the model.</p>
+
+  <hr>
+
+  <h2>Etymology deep dives</h2>
+  <p>One of my favourite types of these deep dives involved etymology.</p>
+
+  <p>For example, I encountered the word <em>éierlechkeet</em>. I initially thought it might be connected to <em>éier</em>, which can mean “before”. When I asked the model about it, I discovered that <em>Éier</em> also means “honour”. From there it became much easier to understand that <em>éierlechkeet</em> means “honesty”.</p>
+
+  <p>Another example involved cross-language connections.</p>
+
+  <p>In Polish, <em>dekarz</em> refers to someone who works on roofs. The word is related to covering houses with roofing material. In Luxembourgish there is a verb <em>décken</em>, which means exactly that: “to cover”.</p>
+
+  <p>While playing with the model I noticed the connection. Once I remembered <em>decken</em>, it became easier to learn related words such as <em>entdecken</em> (“to discover”).</p>
+
+  <p>From there it was natural to ask another question: <em>if adding “ent-” changes the meaning, does it always create the opposite?</em></p>
+
+  <p>This led to more examples:</p>
+  <ul>
+    <li><em>wéckelen</em> — to wrap</li>
+    <li><em>entwéckelen</em> — to develop</li>
+  </ul>
+
+  <p>And from there you quickly arrive at words like <em>Entwécklung</em> and <em>Software Entwécklung</em> — software development.</p>
+
+  <p>There are many other examples as well, such as <em>spanen</em> / <em>entspanen</em> (tighten / relax).</p>
+
+  <hr>
+
+  <h2>Misses</h2>
+  <p>There are also things I didn’t do.</p>
+
+  <p>One idea I mentioned earlier was generating images from my descriptions and comparing them with the original photos. That could have created an additional feedback loop.</p>
+
+  <p>Another missed opportunity was collecting all the new words I encountered in each session and building a small personal dictionary. From there it would have been possible to generate exercises such as cloze tests or flashcards. I never did that, mostly because I tend to get bored with flashcards quite quickly.</p>
+
+  <p>There is also a slightly ironic one.</p>
+
+  <p>The exam is called <em>Sproochentest</em> — literally a test of speaking. In reality I didn’t speak very much during my preparation. Most of my interaction with the model was written. I only practiced speaking during my classes.</p>
+
+  <p>I don’t have scientific evidence for this, but I suspect that the process of formulating thoughts in writing is not a terrible proxy for speaking.</p>
+
+  <p>It wasn’t for lack of trying. The official Luxembourgish government body ZLS provides <a href="https://sproochmaschinn.lu">https://sproochmaschinn.lu</a>, which offers text-to-speech and speech-to-text models.</p>
+
+  <p>The text-to-speech worked quite well, but I never managed to get reliable recognition of my Luxembourgish speech.</p>
+
+  <p>If I were learning a more widely spoken language with stronger speech recognition models, I would definitely focus more on speaking and try to interact with the model verbally rather than through writing.</p>
+
+  <hr>
+
+  <h2>Closing</h2>
+  <p>Using language models alongside real learning materials — podcasts, dictionaries, and classes — is what made the process engaging for me.</p>
+
+  <p>I wouldn’t replace those traditional resources with AI. But combining them created a learning workflow that kept me curious and motivated.</p>
+
+  <p>Luxembourgish made things slightly more difficult because the language has relatively few digital resources. If you are learning a more widely spoken language, you might not need to guide the tools as carefully.</p>
+
+  <p>Still, many of the patterns described here should transfer quite well to other languages.</p>
+
+  <p><a href="../index.html">← Back to home</a></p>
+</body>
+</html>
