@@ -90,3 +90,8 @@ figcaption {
   margin-bottom: 1.5rem;
   font-style: italic;
 }
+
+figure {
+  max-width: 70%;
+  margin: 1.5rem auto;
+}
