@@ -26,6 +26,7 @@ h2 {
 
 p {
     margin-bottom: 1rem;
+    text-align: justify;
 }
 
 ul, ol {
@@ -72,7 +73,7 @@ blockquote {
     }
 }
 
-.post time {
+time {
     display: block;
     color: #666;
     font-size: 0.9rem;
