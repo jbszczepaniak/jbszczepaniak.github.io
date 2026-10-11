@@ -28,13 +28,13 @@ def save_to_markdown(messages):
         return False
         
     now = datetime.now()
-    year_month = now.strftime("%Y-%m")
+    year_month = now.strftime("%Y-%m") # np. "2026-10"
     day = now.strftime("%Y-%m-%d %H:%M")
     
     os.makedirs("til", exist_ok=True)
     filename = f"til/{year_month}.md"
     
-    # Prepending newest entries to the top of the file
+    # Dopisujemy na górę pliku danego miesiąca
     new_entry = f"\n\n### {day}\n"
     for msg in messages:
         new_entry += f"- {msg}\n"
