@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Today I Learned - Jędrzej Szczepaniak</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #333; }
+        h3 { border-bottom: 1px solid #eaeaea; padding-bottom: 5px; margin-top: 40px; color: #0366d6; }
+        ul { padding-left: 20px; }
+        .month-block { margin-bottom: 40px; }
+        #load-more { display: block; width: 100%; padding: 12px; background: #f6f8fa; border: 1px solid #d1d5da; border-radius: 6px; cursor: pointer; font-weight: bold; margin: 40px 0; text-align: center; }
+        #load-more:hover { background: #e1e4e8; }
+    </style>
+</head>
+<body>
+
+    <h1>Today I Learned (TIL)</h1>
+    <p>Osobisty dziennik nauki prowadzony automatycznie z Telegrama.</p>
+    
+    <div id="til-container"></div>
+    
+    <button id="load-more" onclick="loadNextMonth()" style="display:none;">Załaduj starsze wpisy</button>
+
+    <script>
+        const converter = new showdown.Converter();
+        const container = document.getElementById('til-container');
+        const loadMoreBtn = document.getElementById('load-more');
+
+        // Zaczynamy od bieżącej daty
+        let currentDate = new Date();
+
+        async function fetchMonth(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const yearMonth = `${year}-${month}`;
+            const url = `til/${yearMonth}.md`;
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) return false; // Brak pliku dla tego miesiąca
+                
+                const markdownText = await response.text();
+                const htmlContent = converter.makeHtml(markdownText);
+                
+                // Tworzymy blok dla danego miesiąca i wklejamy
+                const monthDiv = document.createElement('div');
+                monthDiv.className = 'month-block';
+                monthDiv.innerHTML = `<h2>${year}-${month}</h2>` + htmlContent;
+                container.appendChild(monthDiv);
+                
+                return true;
+            } catch (err) {
+                return false;
+            }
+        }
+
+        async function loadNextMonth() {
+            // Próbujemy pobrać dany miesiąc
+            const success = await fetchMonth(currentDate);
+            
+            if (success) {
+                // Cofamy datę o 1 miesiąc w tył na zapas do kolejnego kliknięcia / scrolla
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                loadMoreBtn.style.display = "block";
+            } else {
+                // Jeśli bieżący miesiąc nie istnieje, a to pierwsze ładowanie, pokaż info
+                if (container.children.length === 0) {
+                    container.innerHTML = "<p>Brak wpisów TIL. Wyślij coś do swojego bota na Telegramie!</p>";
+                } else {
+                    loadMoreBtn.style.display = "none"; // Koniec historii
+                }
+            }
+        }
+
+        // Automatyczny start - pobierz bieżący miesiąc
+        loadNextMonth();
+    </script>
+</body>
+</html>
