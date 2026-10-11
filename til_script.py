@@ -50,7 +50,7 @@ def save_to_markdown(messages):
         
     now = datetime.now()
     year_month = now.strftime("%Y-%m")
-    day = now.strftime("%Y-%m-%d %H:%M")
+    day = now.strftime("%Y-%m-%d")
     
     os.makedirs("til", exist_ok=True)
     filename = f"til/{year_month}.md"
